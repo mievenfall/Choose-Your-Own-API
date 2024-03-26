@@ -21,11 +21,11 @@
         android:id="@+id/tvTypeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="Type your Pokemon!"
-        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/tvID"
         app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvID"
         app:layout_constraintTop_toBottomOf="@id/tvName" />
 
     <LinearLayout
@@ -86,5 +86,15 @@
         app:layout_constraintEnd_toEndOf="@id/ivPokemon"
         app:layout_constraintStart_toStartOf="@id/ivPokemon"
         app:layout_constraintTop_toBottomOf="@+id/ivPokemon" />
+
+    <TextView
+        android:id="@+id/tvID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pokemon ID"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

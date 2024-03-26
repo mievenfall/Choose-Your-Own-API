@@ -19,6 +19,8 @@ class GlideApp : AppGlideModule()
 class MainActivity : AppCompatActivity() {
     var pokemonImageURL = ""
     var pokemonName = ""
+    var pokemonID = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,8 +28,9 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.bRandom)
         val imageView = findViewById<ImageView>(R.id.ivPokemon)
         val name = findViewById<TextView>(R.id.tvName)
+        val id = findViewById<TextView>(R.id.tvID)
 
-        getNextImage(button, imageView, name)
+        getNextImage(button, imageView, name, id)
     }
 
     private fun getPokemonImageURL() {
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JsonHttpResponseHandler.JSON) {
                 pokemonImageURL = json.jsonObject.getJSONObject("sprites").getString("front_default")
                 pokemonName = json.jsonObject.getString("name")
+                pokemonID = json.jsonObject.getString("id")
             }
 
             override fun onFailure(
@@ -51,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }]
     }
 
-    private fun getNextImage(button: Button, imageView: ImageView, name: TextView) {
+    private fun getNextImage(button: Button, imageView: ImageView, name: TextView, id: TextView) {
         button.setOnClickListener {
             getPokemonImageURL()
 
@@ -61,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 .into(imageView)
 
             name.text = pokemonName
+            id.text = pokemonID
         }
     }
 }
